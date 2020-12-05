@@ -4,7 +4,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform targetTransform;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private EnemyData[] enemyDatas;
 
     private float time = 0;
 
@@ -21,9 +21,14 @@ public class Spawner : MonoBehaviour
 
     private void Spawn(Transform spawnPoint)
     {
-        var enemy = Instantiate(enemyPrefab, transform);
+        var data = enemyDatas[Random.Range(0, enemyDatas.Length)];
+
+        var enemy = Instantiate(data.Prefab, transform);
         enemy.transform.position = spawnPoint.position;
         enemy.transform.forward = Vector3.right;
-        enemy.SetTarget(targetTransform.position);
+
+        var enemyScript = enemy.GetComponent<Enemy>();
+        enemyScript.SetData(data);
+        enemyScript.SetTarget(targetTransform.position);
     }
 }
