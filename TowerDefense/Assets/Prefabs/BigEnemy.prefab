@@ -70,17 +70,17 @@ PrefabInstance:
     - target: {fileID: 8165313621122530995, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8165313621122530995, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8165313621122530995, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8165313622301689079, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
         type: 3}
@@ -92,5 +92,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b27615defd1fdb4418066d8c1d76ef68, type: 2}
+    - target: {fileID: 2592818814183557926, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
+        type: 3}
+      propertyPath: avoidancePriority
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592818814183557926, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592818814183557926, guid: aa1ab6bb15d4ff042a34f4453ee2d18d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1ab6bb15d4ff042a34f4453ee2d18d, type: 3}
