@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private Transform healthBarTransform;
 
     private int hp;
 
