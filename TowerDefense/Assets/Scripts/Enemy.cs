@@ -3,11 +3,10 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Transform targetTransform;
     [SerializeField] private NavMeshAgent navMeshAgent;
 
-    private void Start()
+    public void SetTarget(Vector3 targetPosition)
     {
-        navMeshAgent.SetDestination(targetTransform.position);
+        navMeshAgent.SetDestination(targetPosition);
     }
 }
