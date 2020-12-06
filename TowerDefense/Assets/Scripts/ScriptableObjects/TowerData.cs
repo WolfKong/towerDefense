@@ -8,9 +8,10 @@ public class TowerData : ScriptableObject
     public float Interval;
     public float Damage;
     public GameObject Prefab;
+    public GameObject BlastPrefab;
 
     public override string ToString()
     {
-        return $"Interval:{Interval} Damage:{Damage} Prefab:{Prefab}";
+        return $"Interval:{Interval} Damage:{Damage} Tower:{Prefab} Blast{BlastPrefab}";
     }
 }
