@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbda91f6f5d41b469e50c9b44e07f8a, type: 3}
+  m_Name: Slow
+  m_EditorClassIdentifier: 
+  Interval: 2
+  Damage: 0.5
+  SimultaneousTargets: 1
+  DamageType: 1
+  Prefab: {fileID: 1166575576284514753, guid: a0891d459a79d874f93b46ca07cd3b53, type: 3}
+  BlastPrefab: {fileID: 5230048863558142649, guid: 34c66c8019e9e6148a03867e489d9e6a,
+    type: 3}
