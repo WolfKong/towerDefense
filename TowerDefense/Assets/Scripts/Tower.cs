@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     private Blast blastPrefab;
     private float interval;
     private float damage;
+    private int simultaneousTargets;
 
     private bool resting;
     private float time = 0;
@@ -29,6 +30,7 @@ public class Tower : MonoBehaviour
         this.data = data;
         interval = data.Interval;
         damage = data.Damage;
+        simultaneousTargets = data.SimultaneousTargets;
         blastPrefab = data.BlastPrefab;
     }
 
@@ -58,12 +60,18 @@ public class Tower : MonoBehaviour
 
     private void TryToFire()
     {
-        var target = targets.FirstOrDefault(t => t);
+        var aliveTargets = targets.FindAll(t => t);
+        var aliveCount = aliveTargets.Count;
 
-        if (target)
-            Fire(target.transform);
-        else
+        if (aliveCount == 0)
+        {
             resting = true;
+        }
+        else
+        {
+            for (var i = 0; i < simultaneousTargets && i < aliveCount; i++)
+                Fire(aliveTargets[i].transform);
+        }
     }
 
     private void Fire(Transform targetTransform)
