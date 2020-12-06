@@ -432,6 +432,7 @@ MonoBehaviour:
   - {fileID: 778567069}
   - {fileID: 1160838705}
   - {fileID: 818502874}
+  waveEnded: {fileID: 11400000, guid: a53e693af0cc2d0438c88ff7383868e7, type: 2}
 --- !u!4 &163768795
 Transform:
   m_ObjectHideFlags: 0
@@ -980,6 +981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalBuildingHealth: {fileID: 11400000, guid: 4b06da2fa0230b64f9c58000fc29665d, type: 2}
   levelData: {fileID: 11400000, guid: ee0d82f8d4ee84b4a84aa7dee7de2d33, type: 2}
+  waveEnded: {fileID: 11400000, guid: a53e693af0cc2d0438c88ff7383868e7, type: 2}
 --- !u!4 &746601450
 Transform:
   m_ObjectHideFlags: 0

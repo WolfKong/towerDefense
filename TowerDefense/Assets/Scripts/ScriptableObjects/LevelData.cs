@@ -11,6 +11,8 @@ public class LevelData : ScriptableObject
 
     [NonSerialized] public int CurrentWave;
 
+    public int TotalWaves => Waves.Count;
+
     public override string ToString()
     {
         return $"GoalHealth:{GoalHealth},\nWaves:\n{string.Join(",\n", Waves)}";

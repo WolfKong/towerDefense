@@ -6,9 +6,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] private LevelData levelData;
     [SerializeField] private Transform targetTransform;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private GameEvent waveEnded;
+
+    private const float checkWaveEnd = 2;
 
     private int currentWaveIndex = -1;
     private int spawnCount = 0;
+    private float time = 0;
 
     private void Update()
     {
@@ -16,6 +20,14 @@ public class Spawner : MonoBehaviour
         {
             currentWaveIndex = levelData.CurrentWave;
             StartCoroutine(SpawnWave(levelData.Waves[currentWaveIndex]));
+        }
+
+        time += Time.deltaTime;
+
+        if (time > checkWaveEnd)
+        {
+            time = 0;
+            CheckWaveEnd();
         }
     }
 
@@ -30,6 +42,8 @@ public class Spawner : MonoBehaviour
             SpawnEnemy(spawnPoint, enemy);
             yield return waitInterval;
         }
+
+        waveEnded.Trigger();
     }
 
     private void SpawnEnemy(Transform spawnPoint, EnemyData data)
@@ -44,5 +58,9 @@ public class Spawner : MonoBehaviour
         var enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.SetData(data);
         enemyScript.SetTarget(targetTransform.position);
+    }
+
+    private void CheckWaveEnd()
+    {
     }
 }
