@@ -4,6 +4,7 @@ using UnityEngine;
 public class Blast : MonoBehaviour
 {
     [SerializeField] private new Collider collider;
+    [SerializeField] private bool areaDamage;
 
     public TowerData TowerData { get; set; }
 
@@ -20,7 +21,9 @@ public class Blast : MonoBehaviour
         {
             var enemy = collider.gameObject.GetComponent<Enemy>();
             enemy.ApplyBlast(TowerData);
-            this.collider.enabled = false;
+
+            if (!areaDamage)
+                this.collider.enabled = false;
         }
     }
 }

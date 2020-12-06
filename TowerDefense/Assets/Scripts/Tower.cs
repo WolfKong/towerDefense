@@ -48,11 +48,13 @@ public class Tower : MonoBehaviour
             {
                 var targetTransform = targets[i].transform;
                 var targetPosition = targetTransform.position + targetTransform.forward * 0.5f;
-                var blast = Instantiate(blastPrefab, targetPosition, Quaternion.identity, transform);
+
+                var blast = Instantiate(blastPrefab);
+                blast.transform.position = targetPosition;
                 blast.TowerData = data;
 
                 var bullet = Instantiate(bulletPrefab, transform);
-                bullet.DOMove(targetPosition, 0.5f).OnComplete(() => Destroy(bullet.gameObject));
+                bullet.DOMove(targetPosition, 0.3f).OnComplete(() => Destroy(bullet.gameObject));
 
                 break;
             }
