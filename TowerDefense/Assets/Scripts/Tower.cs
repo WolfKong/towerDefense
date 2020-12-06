@@ -7,8 +7,9 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private TowerData towerData;
 
+    private TowerData data;
     private List<GameObject> targets = new List<GameObject>();
-    private GameObject blastPrefab;
+    private Blast blastPrefab;
     private float interval;
     private float damage;
 
@@ -32,6 +33,7 @@ public class Tower : MonoBehaviour
 
     public void SetData(TowerData data)
     {
+        this.data = data;
         interval = data.Interval;
         damage = data.Damage;
         blastPrefab = data.BlastPrefab;
@@ -46,6 +48,7 @@ public class Tower : MonoBehaviour
                 var targetPosition = targets[i].transform.position;
                 Debug.LogWarning($"PV-FIRE At {targets[i]}, pos {targetPosition}");
                 var blast = Instantiate(blastPrefab, targetPosition, Quaternion.identity, transform);
+                blast.TowerData = data;
 
                 var bullet = Instantiate(bulletPrefab, transform);
                 bullet.DOMove(targetPosition, 0.5f).OnComplete(() => Destroy(bullet.gameObject));

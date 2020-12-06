@@ -8,7 +8,7 @@ public class TowerData : ScriptableObject
     public float Interval;
     public float Damage;
     public GameObject Prefab;
-    public GameObject BlastPrefab;
+    public Blast BlastPrefab;
 
     public override string ToString()
     {
