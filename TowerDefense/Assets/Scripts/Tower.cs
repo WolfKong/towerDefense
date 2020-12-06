@@ -8,8 +8,9 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private TowerData towerData;
 
+    protected List<GameObject> Targets = new List<GameObject>();
+
     private TowerData data;
-    private List<GameObject> targets = new List<GameObject>();
     private List<GameObject> removeList = new List<GameObject>();
     private Blast blastPrefab;
     private float interval;
@@ -50,27 +51,32 @@ public class Tower : MonoBehaviour
 
     private void RemoveDeadTargets()
     {
-        removeList = targets.FindAll(t => !t);
+        removeList = Targets.FindAll(t => !t);
 
         foreach (var target in removeList)
-            targets.Remove(target);
+            Targets.Remove(target);
 
         removeList.Clear();
     }
 
+    protected virtual List<GameObject> ValidTargets()
+    {
+        return Targets.FindAll(t => t);
+    }
+
     private void TryToFire()
     {
-        var aliveTargets = targets.FindAll(t => t);
-        var aliveCount = aliveTargets.Count;
+        var validTargets = ValidTargets();
+        var validCount = validTargets.Count;
 
-        if (aliveCount == 0)
+        if (validCount == 0)
         {
             resting = true;
         }
         else
         {
-            for (var i = 0; i < simultaneousTargets && i < aliveCount; i++)
-                Fire(aliveTargets[i].transform);
+            for (var i = 0; i < simultaneousTargets && i < validCount; i++)
+                Fire(validTargets[i].transform);
         }
     }
 
@@ -92,7 +98,7 @@ public class Tower : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy")
         {
-            targets.Add(collider.gameObject);
+            Targets.Add(collider.gameObject);
 
             if (resting)
                 Fire(collider.transform);
@@ -103,7 +109,7 @@ public class Tower : MonoBehaviour
     {
         var intruder = collider.gameObject;
 
-        if (targets.Contains(intruder) && intruder.tag == "Enemy")
-            targets.Remove(intruder);
+        if (Targets.Contains(intruder) && intruder.tag == "Enemy")
+            Targets.Remove(intruder);
     }
 }

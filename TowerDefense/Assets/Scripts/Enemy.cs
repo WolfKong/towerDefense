@@ -6,13 +6,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private HealthBar healthBar;
 
-    private int hp;
+    private float speed;
+    private int health;
+    private bool debuff;
 
     public void SetData(EnemyData data)
     {
-        hp = data.Health;
+        health = data.Health;
         healthBar.SetMaxHealth(data.Health);
-        navMeshAgent.speed = data.Speed;
+        speed = data.Speed;
+        UpdateSpeed();
     }
 
     public void SetTarget(Vector3 targetPosition)
@@ -20,13 +23,33 @@ public class Enemy : MonoBehaviour
         navMeshAgent.SetDestination(targetPosition);
     }
 
-    public void ApplyBlast(TowerData towerData)
+    private void UpdateHealth()
     {
-        hp = Mathf.RoundToInt(hp - towerData.Damage);
-
-        if (hp <= 0)
+        if (health <= 0)
             Destroy(gameObject);
         else
-            healthBar.SetCurrentHealth(hp);
+            healthBar.SetCurrentHealth(health);
+    }
+
+    private void UpdateSpeed()
+    {
+        navMeshAgent.speed = speed;
+    }
+
+    public bool HasDebuff() => debuff;
+
+    public void ApplyBlast(TowerData towerData)
+    {
+        if (towerData.DamageType == DamageType.Health)
+        {
+            health = Mathf.RoundToInt(health - towerData.Damage);
+            UpdateHealth();
+        }
+        else if (towerData.DamageType == DamageType.Speed)
+        {
+            speed *= towerData.Damage;
+            debuff = true;
+            UpdateSpeed();
+        }
     }
 }
