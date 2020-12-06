@@ -45,8 +45,8 @@ public class Tower : MonoBehaviour
         {
             if (targets[i])
             {
-                var targetPosition = targets[i].transform.position;
-                Debug.LogWarning($"PV-FIRE At {targets[i]}, pos {targetPosition}");
+                var targetTransform = targets[i].transform;
+                var targetPosition = targetTransform.position + targetTransform.forward * 0.5f;
                 var blast = Instantiate(blastPrefab, targetPosition, Quaternion.identity, transform);
                 blast.TowerData = data;
 
@@ -67,6 +67,7 @@ public class Tower : MonoBehaviour
     private void OnTriggerExit(Collider collider)
     {
         var intruder = collider.gameObject;
+
         if (targets.Contains(intruder) && intruder.tag == "Enemy")
             targets.Remove(intruder);
     }

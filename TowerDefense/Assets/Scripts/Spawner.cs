@@ -6,13 +6,14 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private EnemyData[] enemyDatas;
 
+    private int spawnCount = 0;
     private float time = 0;
 
     private void Update()
     {
         time += Time.deltaTime;
 
-        if (time > 1)
+        if (time > 2)
         {
             time = 0;
             Spawn(spawnPoints[Random.Range(0, spawnPoints.Length)]);
@@ -21,11 +22,13 @@ public class Spawner : MonoBehaviour
 
     private void Spawn(Transform spawnPoint)
     {
+        spawnCount++;
         var data = enemyDatas[Random.Range(0, enemyDatas.Length)];
 
         var enemy = Instantiate(data.Prefab, transform);
         enemy.transform.position = spawnPoint.position;
         enemy.transform.forward = Vector3.right;
+        enemy.name = $"{data.name}_{spawnCount}";
 
         var enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.SetData(data);

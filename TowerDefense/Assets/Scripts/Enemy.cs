@@ -20,18 +20,8 @@ public class Enemy : MonoBehaviour
         navMeshAgent.SetDestination(targetPosition);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    public void ApplyBlast(TowerData towerData)
     {
-        if (collider.gameObject.tag == "Blast")
-        {
-            var blast = collider.gameObject.GetComponent<Blast>();
-            ApplyBlast(blast.TowerData);
-        }
-    }
-
-    private void ApplyBlast(TowerData towerData)
-    {
-        Debug.LogWarning($"PV-APPLY BLAST hp {hp},  dmg {towerData.Damage}");
         hp = Mathf.RoundToInt(hp - towerData.Damage);
 
         if (hp < 0)
