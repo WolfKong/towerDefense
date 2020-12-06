@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interval: 1
   Damage: 10
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 215746129870454704, guid: cfdc560412a3cbd4686c3463542258a9, type: 3}
+  BlastPrefab: {fileID: 5520985022338316408, guid: 9702a89237b35a145ba2b652a02a5f2e,
+    type: 3}
