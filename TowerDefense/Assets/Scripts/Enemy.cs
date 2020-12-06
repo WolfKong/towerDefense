@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         hp = Mathf.RoundToInt(hp - towerData.Damage);
 
-        if (hp < 0)
+        if (hp <= 0)
             Destroy(gameObject);
         else
             healthBar.SetCurrentHealth(hp);
