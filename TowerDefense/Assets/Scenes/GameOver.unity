@@ -574,6 +574,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3389c38b0be8d06478dbdacb396b138b, type: 3}
+--- !u!1 &916918730385618042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 916918730132755884, guid: 3389c38b0be8d06478dbdacb396b138b,
+    type: 3}
+  m_PrefabInstance: {fileID: 916918730385618041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &916918730385618043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916918730385618042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350ebb523d6cdac4aa5f69fc2b1744ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wavesLeftText: {fileID: 1951582126}
+  waves: {fileID: 11400000, guid: 4b06da2fa0230b64f9c58000fc29665d, type: 2}
+  retryButton: {fileID: 7852109000002815396}
 --- !u!114 &7852109000002815396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,29 +637,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7852109000002815397}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Arena
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadSceneButton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Arena
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &7852109000002815397
