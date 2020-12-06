@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   Waves:
+  - {fileID: 11400000, guid: a9d7fa3b7c576594b98576cb9776310c, type: 2}
+  - {fileID: 11400000, guid: 4780315e65631bb4a86fad96c1cb8b51, type: 2}
   - {fileID: 11400000, guid: f0b877444962a3d4184af8a642547645, type: 2}
   - {fileID: 11400000, guid: 08825d7b630f1cc45b46991f475d2282, type: 2}
   GoalHealth: 5
