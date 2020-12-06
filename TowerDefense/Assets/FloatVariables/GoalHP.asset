@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7955428627e4dfc40b8bff12283b8f6e, type: 3}
   m_Name: GoalHP
   m_EditorClassIdentifier: 
-  Value: 0
+  Value: 5
