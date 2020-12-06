@@ -1,34 +1,45 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private LevelData levelData;
     [SerializeField] private Transform targetTransform;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private EnemyData[] enemyDatas;
 
+    private int currentWaveIndex = -1;
     private int spawnCount = 0;
-    private float time = 0;
 
     private void Update()
     {
-        time += Time.deltaTime;
-
-        if (time > 2)
+        if (levelData.CurrentWave != currentWaveIndex)
         {
-            time = 0;
-            Spawn(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+            currentWaveIndex = levelData.CurrentWave;
+            StartCoroutine(SpawnWave(levelData.Waves[currentWaveIndex]));
         }
     }
 
-    private void Spawn(Transform spawnPoint)
+    private IEnumerator SpawnWave(MiniWaveData data)
+    {
+        spawnCount = 0;
+        var spawnPoint = spawnPoints[(int)data.SpawnPoint];
+        var waitInterval = new WaitForSeconds(data.IntervalBetweenSpawns);
+
+        foreach (var enemy in data.Enemies)
+        {
+            SpawnEnemy(spawnPoint, enemy);
+            yield return waitInterval;
+        }
+    }
+
+    private void SpawnEnemy(Transform spawnPoint, EnemyData data)
     {
         spawnCount++;
-        var data = enemyDatas[Random.Range(0, enemyDatas.Length)];
 
         var enemy = Instantiate(data.Prefab, transform);
         enemy.transform.position = spawnPoint.position;
         enemy.transform.forward = Vector3.right;
-        enemy.name = $"{data.name}_{spawnCount}";
+        enemy.name = $"{data.name}_wave{currentWaveIndex}_{spawnCount}";
 
         var enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.SetData(data);

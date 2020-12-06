@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81a284261a96b49b73053c73fd554e, type: 3}
   m_Name: FastWeak
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 4
   Health: 50
   Prefab: {fileID: 5891018672387439263, guid: 527b01cf9e4a0bb4b919b4b854eb3b93, type: 3}

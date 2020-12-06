@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81a284261a96b49b73053c73fd554e, type: 3}
   m_Name: SlowStrong
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 1.5
   Health: 500
   Prefab: {fileID: 4544799127265570638, guid: f0478b382050ff84783710cc8adbd33f, type: 3}

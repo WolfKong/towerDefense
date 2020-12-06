@@ -11,6 +11,7 @@ public class LevelConditions : MonoBehaviour
     {
         gameOver = false;
         goalBuildingHealth.Value = levelData.GoalHealth;
+        levelData.CurrentWave = 0;
     }
 
     private void Update()

@@ -9,8 +9,10 @@ public class LevelData : ScriptableObject
     public List<MiniWaveData> Waves;
     public int GoalHealth;
 
+    [NonSerialized] public int CurrentWave;
+
     public override string ToString()
     {
-        return $"GoalHealth:{GoalHealth},\nWaves:{string.Join(",\n", Waves)}";
+        return $"GoalHealth:{GoalHealth},\nWaves:\n{string.Join(",\n", Waves)}";
     }
 }

@@ -17,6 +17,6 @@ public class MiniWaveData : ScriptableObject
 
     public override string ToString()
     {
-        return $"SpawnPoint:{SpawnPoint}, Interval:{IntervalBetweenSpawns},\nEnemies:{string.Join(",\n", Enemies)}";
+        return $"SpawnPoint:{SpawnPoint}, Interval:{IntervalBetweenSpawns},\nEnemies:\n{string.Join(",\n", Enemies)}";
     }
 }
