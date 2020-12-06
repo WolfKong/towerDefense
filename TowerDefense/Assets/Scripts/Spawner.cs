@@ -1,17 +1,22 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    private const float checkWaveEnd = 2;
+
     [SerializeField] private LevelData levelData;
     [SerializeField] private Transform targetTransform;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameEvent waveEnded;
 
-    private const float checkWaveEnd = 2;
+    private List<GameObject> aliveEnemies = new List<GameObject>();
+    private List<GameObject> removeList = new List<GameObject>();
 
     private int currentWaveIndex = -1;
     private int spawnCount = 0;
+    private bool finishedSpawningWave;
     private float time = 0;
 
     private void Update()
@@ -33,7 +38,9 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnWave(MiniWaveData data)
     {
+        finishedSpawningWave = false;
         spawnCount = 0;
+
         var spawnPoint = spawnPoints[(int)data.SpawnPoint];
         var waitInterval = new WaitForSeconds(data.IntervalBetweenSpawns);
 
@@ -43,7 +50,7 @@ public class Spawner : MonoBehaviour
             yield return waitInterval;
         }
 
-        waveEnded.Trigger();
+        finishedSpawningWave = true;
     }
 
     private void SpawnEnemy(Transform spawnPoint, EnemyData data)
@@ -51,6 +58,8 @@ public class Spawner : MonoBehaviour
         spawnCount++;
 
         var enemy = Instantiate(data.Prefab, transform);
+        aliveEnemies.Add(enemy);
+
         enemy.transform.position = spawnPoint.position;
         enemy.transform.forward = Vector3.right;
         enemy.name = $"{data.name}_wave{currentWaveIndex}_{spawnCount}";
@@ -62,5 +71,18 @@ public class Spawner : MonoBehaviour
 
     private void CheckWaveEnd()
     {
+        for (var i = 0; i < aliveEnemies.Count; i++)
+        {
+            if (!aliveEnemies[i])
+                removeList.Add(aliveEnemies[i]);
+        }
+
+        foreach (var enemy in removeList)
+            aliveEnemies.Remove(enemy);
+
+        removeList.Clear();
+
+        if (finishedSpawningWave && aliveEnemies.Count == 0)
+            waveEnded.Trigger();
     }
 }
