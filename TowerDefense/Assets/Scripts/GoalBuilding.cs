@@ -9,6 +9,7 @@ public class GoalBuilding : MonoBehaviour
         if (collider.gameObject.tag == "Enemy")
         {
             health.Value--;
+            Destroy(collider.gameObject);
         }
     }
 }

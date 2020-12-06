@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
 
     private TowerData data;
     private List<GameObject> targets = new List<GameObject>();
+    private List<GameObject> removeList = new List<GameObject>();
     private Blast blastPrefab;
     private float interval;
     private float damage;
@@ -55,7 +56,17 @@ public class Tower : MonoBehaviour
 
                 break;
             }
+            else
+            {
+                removeList.Add(targets[i]);
+            }
         }
+
+        // Remove Dead targets
+        foreach (var target in removeList)
+            targets.Remove(target);
+
+        removeList.Clear();
     }
 
     private void OnTriggerEnter(Collider collider)
