@@ -36,7 +36,7 @@ public class LevelConditions : MonoBehaviour
         if (levelData.CurrentWave == levelData.TotalWaves - 1)
         {
             gameOver = true;
-            SceneLoader.LoadScene("GameOver");
+            SceneLoader.LoadScene("LevelComplete");
         }
         else
         {
