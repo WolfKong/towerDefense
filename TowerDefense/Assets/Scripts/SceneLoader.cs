@@ -22,6 +22,11 @@ public class SceneLoader : MonoBehaviour
         animator = Instantiate(animatorPrefab, transform);
     }
 
+    public void LoadSceneButton(string sceneName)
+    {
+        LoadScene(sceneName);
+    }
+
     public static void LoadScene(string sceneName)
     {
         if (instance == null)
