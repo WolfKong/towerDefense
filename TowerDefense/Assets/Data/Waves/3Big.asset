@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15c9bdf4f9756074c9ced2d2ce772982, type: 3}
-  m_Name: 2Big
+  m_Name: 3Big
   m_EditorClassIdentifier: 
-  SpawnPoint: 2
+  SpawnPoint: 1
   Enemies:
   - {fileID: 11400000, guid: 81ebc9c0761bfc14c86d33b38cb3d251, type: 2}
   - {fileID: 11400000, guid: 81ebc9c0761bfc14c86d33b38cb3d251, type: 2}
-  IntervalBetweenSpawns: 2
+  - {fileID: 11400000, guid: 81ebc9c0761bfc14c86d33b38cb3d251, type: 2}
+  IntervalBetweenSpawns: 3
