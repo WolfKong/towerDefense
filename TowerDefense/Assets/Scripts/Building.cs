@@ -1,31 +1,38 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class Building : MonoBehaviour, IPointerClickHandler
 {
-    private Vector3 offset;
-    private float yPosition;
-    private bool selected;
+    public static event Action<PointerEventData, Building> SelectedEvent;
+
+    [NonSerialized] public float YPosition;
 
     private void Start()
     {
-        yPosition = transform.position.y;
+        YPosition = transform.position.y;
     }
 
-    public void OnPointerDown(PointerEventData pointerEventData)
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
-        selected = true;
-        offset = transform.position - pointerEventData.pointerCurrentRaycast.worldPosition;
+        var offset = transform.position - pointerEventData.pointerCurrentRaycast.worldPosition;
+
+        SelectedEvent?.Invoke(pointerEventData, this);
     }
 
-    public void OnPointerUp(PointerEventData pointerEventData)
+    public void OnConfirm()
     {
-        selected = false;
+        Debug.LogWarning($"PV-ONCOFIRM");
     }
 
-    public void OnDrag(PointerEventData pointerEventData)
+    public void OnMove()
     {
-        var newPosition = pointerEventData.pointerCurrentRaycast.worldPosition + offset;
-        transform.position = new Vector3(newPosition.x, yPosition, newPosition.z);
+        Debug.LogWarning($"PV-MOVE");
+    }
+
+    public void OnCancel()
+    {
+        Debug.LogWarning($"PV-DESTROY");
+        Destroy(gameObject);
     }
 }
