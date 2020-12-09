@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7141074805075785315, guid: 946d934d7ade2e049a8b2652fce5a5b7,
     type: 3}
-  towerData: {fileID: 11400000, guid: 92a97ea8c5317134c8fae30ff1c54439, type: 2}
 --- !u!1001 &1355295106630039153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,6 +92,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 92a97ea8c5317134c8fae30ff1c54439,
         type: 2}
+    - target: {fileID: 6367148920617579692, guid: cfdc560412a3cbd4686c3463542258a9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: af6ee921285fc084a9cf8665745fae74, type: 2}
     m_RemovedComponents:
     - {fileID: 7898155695222257267, guid: cfdc560412a3cbd4686c3463542258a9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfdc560412a3cbd4686c3463542258a9, type: 3}
