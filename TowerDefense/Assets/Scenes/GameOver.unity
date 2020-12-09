@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavesLeftText: {fileID: 1951582126}
-  waves: {fileID: 11400000, guid: 4b06da2fa0230b64f9c58000fc29665d, type: 2}
+  levelData: {fileID: 11400000, guid: ee0d82f8d4ee84b4a84aa7dee7de2d33, type: 2}
   retryButton: {fileID: 7852109000002815396}
 --- !u!114 &7852109000002815396
 MonoBehaviour:

@@ -4,12 +4,12 @@ using UnityEngine.UI;
 public class GameOverScreen : MonoBehaviour
 {
     [SerializeField] private Text wavesLeftText;
-    [SerializeField] private FloatVariable waves;
+    [SerializeField] private LevelData levelData;
     [SerializeField] private Button retryButton;
 
     void Start()
     {
-        wavesLeftText.text = $"{waves.Value} waves left";
+        wavesLeftText.text = $"{levelData.TotalWaves - levelData.CurrentWave} waves left";
         retryButton.onClick.AddListener(RetryLevel);
     }
 
