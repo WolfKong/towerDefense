@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4179543648576555861}
   - component: {fileID: 4413132870908917322}
   m_Layer: 5
-  m_Name: BuildButton
+  m_Name: BuildingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,6 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c1aed8c9075bf4491f8b89ac985993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   nameText: {fileID: 4179543647777152939}
   button: {fileID: 4179543648576555861}
+  cameraData: {fileID: 11400000, guid: b5bdc1addfec8ad40807a1507a30132c, type: 2}

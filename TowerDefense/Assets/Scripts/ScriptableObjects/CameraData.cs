@@ -6,6 +6,7 @@ using UnityEngine;
 public class CameraData : ScriptableObject
 {
     public Transform Transform;
+    public Camera Camera;
 
     public override string ToString()
     {
