@@ -8,8 +8,11 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     [NonSerialized] public float YPosition;
 
+    private Material material;
+
     private void Start()
     {
+        material = GetComponent<MeshRenderer>().material;
         YPosition = transform.position.y;
     }
 
@@ -22,17 +25,20 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     public void OnConfirm()
     {
-        Debug.LogWarning($"PV-ONCOFIRM");
-    }
-
-    public void OnMove()
-    {
-        Debug.LogWarning($"PV-MOVE");
     }
 
     public void OnCancel()
     {
-        Debug.LogWarning($"PV-DESTROY");
         Destroy(gameObject);
+    }
+
+    public void OnBeginDrag()
+    {
+        material.color = Color.cyan;
+    }
+
+    public void OnEndDrag()
+    {
+        material.color = Color.white;
     }
 }
