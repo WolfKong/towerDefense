@@ -7,6 +7,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 {
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
+    [SerializeField] private Button rotateButton;
     [SerializeField] private Canvas canvas;
     [SerializeField] private new Camera camera;
 
@@ -23,6 +24,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
         confirmButton.onClick.AddListener(Confirm);
         cancelButton.onClick.AddListener(Cancel);
+        rotateButton.onClick.AddListener(Rotate);
 
         Building.SelectedEvent += OnBuildingSelected;
     }
@@ -37,6 +39,11 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         building.OnCancel();
         canvas.enabled = false;
+    }
+
+    private void Rotate()
+    {
+        buildingTransform.eulerAngles += new Vector3(0, 90, 0);
     }
 
     private void OnBuildingSelected(Vector2 pointerPosition, Building building)
