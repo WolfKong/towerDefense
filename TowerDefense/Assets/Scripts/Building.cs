@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class Building : MonoBehaviour, IPointerClickHandler
 {
-    public static event Action<PointerEventData, Building> SelectedEvent;
+    public static event Action<Vector2, Building> SelectedEvent;
 
     [NonSerialized] public float YPosition;
 
@@ -18,9 +18,12 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        var offset = transform.position - pointerEventData.pointerCurrentRaycast.worldPosition;
+        Select(pointerEventData.position);
+    }
 
-        SelectedEvent?.Invoke(pointerEventData, this);
+    public void Select(Vector2 pointerPosition)
+    {
+        SelectedEvent?.Invoke(pointerPosition, this);
     }
 
     public void OnConfirm()

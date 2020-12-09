@@ -39,7 +39,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         canvas.enabled = false;
     }
 
-    private void OnBuildingSelected(PointerEventData pointerEventData, Building building)
+    private void OnBuildingSelected(Vector2 pointerPosition, Building building)
     {
         canvas.enabled = true;
 
@@ -47,7 +47,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         buildingTransform = building.transform;
         buildingOffset = Vector3.zero;
 
-        rectTransform.position = pointerEventData.position;
+        rectTransform.position = pointerPosition;
     }
 
     public void OnBeginDrag(PointerEventData pointerEventData)
