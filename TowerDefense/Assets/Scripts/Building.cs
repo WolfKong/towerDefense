@@ -13,7 +13,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         material = GetComponent<MeshRenderer>().material;
-        YPosition = transform.position.y;
+        YPosition = transform.localScale.y;
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)

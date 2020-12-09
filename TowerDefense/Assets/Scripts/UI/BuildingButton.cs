@@ -25,6 +25,6 @@ public class BuildingButton : MonoBehaviour, IDataUI
         tower.SetData(towerData);
 
         var building = tower.GetComponent<Building>();
-        building.Select(Input.mousePosition);
+        building.Select(new Vector2(Screen.width, Screen.height) * 0.5f);
     }
 }

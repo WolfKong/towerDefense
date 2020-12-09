@@ -6,7 +6,6 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] private Transform bulletPrefab;
-    [SerializeField] private TowerData towerData;
 
     protected List<GameObject> Targets = new List<GameObject>();
 
@@ -23,7 +22,6 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         resting = true;
-        SetData(towerData);
     }
 
     public void SetData(TowerData data)
