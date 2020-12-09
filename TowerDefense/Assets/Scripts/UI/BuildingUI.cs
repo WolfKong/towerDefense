@@ -29,6 +29,11 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         Building.SelectedEvent += OnBuildingSelected;
     }
 
+    private void OnDestroy()
+    {
+        Building.SelectedEvent -= OnBuildingSelected;
+    }
+
     private void Confirm()
     {
         building.OnConfirm();

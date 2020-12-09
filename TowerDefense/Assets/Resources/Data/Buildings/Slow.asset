@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66488a708ccb6eb4f9e606f0074afc4b, type: 3}
-  m_Name: SlowTower
+  m_Name: Slow
   m_EditorClassIdentifier: 
   Cost: 12
   Prefab: {fileID: 1166575576284514753, guid: a0891d459a79d874f93b46ca07cd3b53, type: 3}

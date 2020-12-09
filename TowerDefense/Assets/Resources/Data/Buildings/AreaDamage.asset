@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66488a708ccb6eb4f9e606f0074afc4b, type: 3}
-  m_Name: AreaDamageTower
+  m_Name: AreaDamage
   m_EditorClassIdentifier: 
   Cost: 15
   Prefab: {fileID: 7516407441761632991, guid: cbd8411f07df9bb41a602a84f52733b0, type: 3}
