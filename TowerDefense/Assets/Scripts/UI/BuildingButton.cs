@@ -6,7 +6,7 @@ public class BuildingButton : MonoBehaviour, IDataUI
     [SerializeField] private Text nameText;
     [SerializeField] private Button button;
 
-    private TowerData towerData;
+    private BuildingData buildingData;
 
     private void Start()
     {
@@ -15,16 +15,24 @@ public class BuildingButton : MonoBehaviour, IDataUI
 
     public void SetData(ScriptableObject data)
     {
-        towerData = (TowerData)data;
-        nameText.text = towerData.name;
+        buildingData = (BuildingData)data;
+        nameText.text = buildingData.name;
     }
 
     private void OnClick()
     {
-        var tower = Instantiate(towerData.Prefab).GetComponent<Tower>();
-        tower.SetData(towerData);
+        var building = Instantiate(buildingData.Prefab);
 
-        var building = tower.GetComponent<Building>();
-        building.Select(new Vector2(Screen.width, Screen.height) * 0.5f);
+        if (buildingData.TowerData)
+        {
+            var tower = building.GetComponent<Tower>();
+            if (tower)
+                tower.SetData(buildingData.TowerData);
+            else
+                Debug.LogError("No Tower script on prefab.");
+        }
+
+        var buildingScript = building.GetComponent<Building>();
+        buildingScript.Select(new Vector2(Screen.width, Screen.height) * 0.5f);
     }
 }
