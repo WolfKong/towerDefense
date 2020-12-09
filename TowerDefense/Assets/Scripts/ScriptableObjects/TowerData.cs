@@ -14,11 +14,10 @@ public class TowerData : ScriptableObject
     public float Damage;
     public int SimultaneousTargets = 1;
     public DamageType DamageType = DamageType.Health;
-    public GameObject Prefab;
     public Blast BlastPrefab;
 
     public override string ToString()
     {
-        return $"Interval:{Interval} Damage:{Damage} Targets:{SimultaneousTargets} Tower:{Prefab} Blast{BlastPrefab}";
+        return $"Interval:{Interval} Damage:{Damage} Targets:{SimultaneousTargets} Blast{BlastPrefab}";
     }
 }
