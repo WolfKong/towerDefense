@@ -4852,6 +4852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7768266436387986608}
+  - component: {fileID: 3485965780899104827}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -4875,3 +4876,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3485965780899104827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768266436387986609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ea5a0fe93ba5f4bb7c368684d8c336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dangerFX: {fileID: 5540297708992213583}

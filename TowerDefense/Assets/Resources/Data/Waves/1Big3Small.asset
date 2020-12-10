@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c9bdf4f9756074c9ced2d2ce772982, type: 3}
   m_Name: 1Big3Small
   m_EditorClassIdentifier: 
-  SpawnPoint: 1
+  SpawnPosition: 1
   Enemies:
   - {fileID: 11400000, guid: 81ebc9c0761bfc14c86d33b38cb3d251, type: 2}
   - {fileID: 11400000, guid: ab628a8e3bb618741a1a81ce600245ee, type: 2}

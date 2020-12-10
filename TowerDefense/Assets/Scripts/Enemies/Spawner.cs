@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private LevelData levelData;
     [SerializeField] private Transform targetTransform;
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private SpawnPoint[] spawnPoints;
     [SerializeField] private GameEvent waveEnded;
 
     private List<GameObject> aliveEnemies = new List<GameObject>();
@@ -41,12 +41,16 @@ public class Spawner : MonoBehaviour
         finishedSpawningWave = false;
         spawnCount = 0;
 
-        var spawnPoint = spawnPoints[(int)data.SpawnPoint];
+        var spawnPositionIndex = (int)data.SpawnPosition;
+        for (var i = 0; i < spawnPoints.Length; i++)
+            spawnPoints[i].SetDanger(i == spawnPositionIndex);
+
+        var spawnTransform = spawnPoints[spawnPositionIndex].transform;
         var waitInterval = new WaitForSeconds(data.IntervalBetweenSpawns);
 
         foreach (var enemy in data.Enemies)
         {
-            SpawnEnemy(spawnPoint, enemy);
+            SpawnEnemy(spawnTransform, enemy);
             yield return waitInterval;
         }
 

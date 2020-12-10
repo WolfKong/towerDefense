@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SpawnPoint
+public enum SpawnPosition
 {
     Bottom, Middle, Top
 }
@@ -11,12 +11,12 @@ public enum SpawnPoint
 [Serializable]
 public class MiniWaveData : ScriptableObject
 {
-    public SpawnPoint SpawnPoint;
+    public SpawnPosition SpawnPosition;
     public List<EnemyData> Enemies;
     public float IntervalBetweenSpawns;
 
     public override string ToString()
     {
-        return $"SpawnPoint:{SpawnPoint}, Interval:{IntervalBetweenSpawns},\nEnemies:\n{string.Join(",\n", Enemies)}";
+        return $"SpawnPosition:{SpawnPosition}, Interval:{IntervalBetweenSpawns},\nEnemies:\n{string.Join(",\n", Enemies)}";
     }
 }
