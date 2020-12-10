@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class Building : MonoBehaviour, IPointerClickHandler
 {
     public static event Action<Vector2, Building> SelectedEvent;
+    public static event Action DestroyedEvent;
 
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private RuntimeList buildingsList;
@@ -23,6 +24,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
     private void OnDestroy()
     {
         buildingsList.Items.Remove(gameObject);
+        DestroyedEvent?.Invoke();
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)

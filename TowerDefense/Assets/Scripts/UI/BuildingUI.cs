@@ -28,11 +28,13 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         rotateButton.onClick.AddListener(Rotate);
 
         Building.SelectedEvent += OnBuildingSelected;
+        Building.DestroyedEvent += OnBuildingDestroyed;
     }
 
     private void OnDestroy()
     {
         Building.SelectedEvent -= OnBuildingSelected;
+        Building.DestroyedEvent -= OnBuildingDestroyed;
     }
 
     private void Confirm()
@@ -52,6 +54,11 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         buildingTransform.eulerAngles += new Vector3(0, 90, 0);
     }
 
+    private void OnBuildingDestroyed()
+    {
+        canvas.enabled = false;
+    }
+
     private void OnBuildingSelected(Vector2 pointerPosition, Building building)
     {
         canvas.enabled = true;
@@ -61,6 +68,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         buildingOffset = Vector3.zero;
 
         rectTransform.position = pointerPosition;
+        buildingPlacedEvent.Trigger();
     }
 
     public void OnBeginDrag(PointerEventData pointerEventData)

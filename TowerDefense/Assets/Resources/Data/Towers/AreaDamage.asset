@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbda91f6f5d41b469e50c9b44e07f8a, type: 3}
   m_Name: AreaDamage
   m_EditorClassIdentifier: 
-  Interval: 1
+  Interval: 1.5
   Damage: 20
-  Prefab: {fileID: 7516407441761632991, guid: cbd8411f07df9bb41a602a84f52733b0, type: 3}
+  SimultaneousTargets: 1
+  DamageType: 0
   BlastPrefab: {fileID: 5230048863558142649, guid: ac4e0f0e65cb118489225505587abfd6,
     type: 3}
