@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private const float checkWaveEnd = 2;
+    private const float checkWaveEndInterval = 2;
 
     [SerializeField] private LevelData levelData;
     [SerializeField] private Transform targetTransform;
     [SerializeField] private SpawnPoint[] spawnPoints;
-    [SerializeField] private GameEvent waveEnded;
+    [SerializeField] private GameEvent waveEndedEvent;
+    [SerializeField] private GameEvent waveStartedEvent;
 
     private List<GameObject> aliveEnemies = new List<GameObject>();
     private List<GameObject> removeList = new List<GameObject>();
@@ -17,35 +18,38 @@ public class Spawner : MonoBehaviour
     private int currentWaveIndex = -1;
     private int spawnCount = 0;
     private bool finishedSpawningWave;
-    private float time = 0;
 
-    private void Update()
+    private void Start()
     {
-        if (levelData.CurrentWave != currentWaveIndex)
-        {
-            currentWaveIndex = levelData.CurrentWave;
-            StartCoroutine(SpawnWave(levelData.Waves[currentWaveIndex]));
-        }
+        waveStartedEvent.Listen(OnWaveStarted);
 
-        time += Time.deltaTime;
+        ShowSpawnPointDanger(0);
+        InvokeRepeating(nameof(CheckWaveEnd), 0, checkWaveEndInterval);
+    }
 
-        if (time > checkWaveEnd)
-        {
-            time = 0;
-            CheckWaveEnd();
-        }
+    private void OnDestroy()
+    {
+        waveStartedEvent.Unlisten(OnWaveStarted);
+    }
+
+    private void OnWaveStarted()
+    {
+        currentWaveIndex = levelData.CurrentWave;
+        StartCoroutine(SpawnWave(levelData.Waves[currentWaveIndex]));
+    }
+
+    private void ShowSpawnPointDanger(int waveIndex)
+    {
+        var spawnPositionIndex = (int)levelData.Waves[waveIndex].SpawnPosition;
+        for (var i = 0; i < spawnPoints.Length; i++)
+            spawnPoints[i].SetDanger(i == spawnPositionIndex);
     }
 
     private IEnumerator SpawnWave(WaveData data)
     {
-        finishedSpawningWave = false;
         spawnCount = 0;
 
-        var spawnPositionIndex = (int)data.SpawnPosition;
-        for (var i = 0; i < spawnPoints.Length; i++)
-            spawnPoints[i].SetDanger(i == spawnPositionIndex);
-
-        var spawnTransform = spawnPoints[spawnPositionIndex].transform;
+        var spawnTransform = spawnPoints[(int)data.SpawnPosition].transform;
         var miniWaveInterval = new WaitForSeconds(data.IntervalBetweenMiniWaves);
 
         foreach (var miniWave in data.MiniWaves)
@@ -94,6 +98,10 @@ public class Spawner : MonoBehaviour
         removeList.Clear();
 
         if (finishedSpawningWave && aliveEnemies.Count == 0)
-            waveEnded.Trigger();
+        {
+            finishedSpawningWave = false;
+            waveEndedEvent.Trigger();
+            ShowSpawnPointDanger(levelData.CurrentWave);
+        }
     }
 }

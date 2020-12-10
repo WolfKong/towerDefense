@@ -8,6 +8,8 @@ public class LevelData : ScriptableObject
 {
     public List<WaveData> Waves;
     public int GoalHealth;
+    public int InitialInterval;
+    public int IntervalBetweenWaves;
 
     [NonSerialized] public int CurrentWave;
 
@@ -15,6 +17,6 @@ public class LevelData : ScriptableObject
 
     public override string ToString()
     {
-        return $"GoalHealth:{GoalHealth},\nWaves:\n{string.Join(",\n", Waves)}";
+        return $"GoalHealth:{GoalHealth}, Intervals:{InitialInterval}, {IntervalBetweenWaves}\nWaves:\n{string.Join(",\n", Waves)}";
     }
 }

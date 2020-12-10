@@ -1,25 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LevelConditions : MonoBehaviour
 {
     [SerializeField] private FloatVariable goalBuildingHealth;
     [SerializeField] private LevelData levelData;
-    [SerializeField] private GameEvent waveEnded;
+    [SerializeField] private GameEvent waveEndedEvent;
+    [SerializeField] private GameEvent waveStartedEvent;
 
+    private Coroutine intervalCoroutine;
     private bool gameOver;
 
     private void Start()
     {
-        waveEnded.Listen(OnWaveEnd);
+        waveStartedEvent.Listen(OnWaveStarted);
+        waveEndedEvent.Listen(OnWaveEnded);
 
         gameOver = false;
         goalBuildingHealth.Value = levelData.GoalHealth;
         levelData.CurrentWave = 0;
+
+        intervalCoroutine = StartCoroutine(WaitWaveInterval());
     }
 
     private void OnDestroy()
     {
-        waveEnded.Unlisten(OnWaveEnd);
+        waveStartedEvent.Listen(OnWaveStarted);
+        waveEndedEvent.Unlisten(OnWaveEnded);
     }
 
     private void Update()
@@ -31,7 +38,22 @@ public class LevelConditions : MonoBehaviour
         }
     }
 
-    private void OnWaveEnd()
+    private IEnumerator WaitWaveInterval()
+    {
+        var interval = levelData.CurrentWave == 0 ? levelData.InitialInterval : levelData.IntervalBetweenWaves;
+
+        yield return new WaitForSeconds(interval);
+
+        waveStartedEvent.Trigger();
+    }
+
+    private void OnWaveStarted()
+    {
+        if (intervalCoroutine != null)
+            StopCoroutine(intervalCoroutine);
+    }
+
+    private void OnWaveEnded()
     {
         if (levelData.CurrentWave == levelData.TotalWaves - 1)
         {
@@ -41,6 +63,7 @@ public class LevelConditions : MonoBehaviour
         else
         {
             levelData.CurrentWave += 1;
+            intervalCoroutine = StartCoroutine(WaitWaveInterval());
         }
     }
 }
