@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class LevelData : ScriptableObject
 {
-    public List<MiniWaveData> Waves;
+    public List<WaveData> Waves;
     public int GoalHealth;
 
     [NonSerialized] public int CurrentWave;

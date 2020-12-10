@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnWave(MiniWaveData data)
+    private IEnumerator SpawnWave(WaveData data)
     {
         finishedSpawningWave = false;
         spawnCount = 0;
@@ -46,12 +46,19 @@ public class Spawner : MonoBehaviour
             spawnPoints[i].SetDanger(i == spawnPositionIndex);
 
         var spawnTransform = spawnPoints[spawnPositionIndex].transform;
-        var waitInterval = new WaitForSeconds(data.IntervalBetweenSpawns);
+        var miniWaveInterval = new WaitForSeconds(data.IntervalBetweenMiniWaves);
 
-        foreach (var enemy in data.Enemies)
+        foreach (var miniWave in data.MiniWaves)
         {
-            SpawnEnemy(spawnTransform, enemy);
-            yield return waitInterval;
+            var spawnInterval = new WaitForSeconds(miniWave.IntervalBetweenSpawns);
+
+            foreach (var enemy in miniWave.Enemies)
+            {
+                SpawnEnemy(spawnTransform, enemy);
+                yield return spawnInterval;
+            }
+
+            yield return miniWaveInterval;
         }
 
         finishedSpawningWave = true;
