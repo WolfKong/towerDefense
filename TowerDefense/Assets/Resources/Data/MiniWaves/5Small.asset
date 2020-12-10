@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab628a8e3bb618741a1a81ce600245ee, type: 2}
   - {fileID: 11400000, guid: ab628a8e3bb618741a1a81ce600245ee, type: 2}
   - {fileID: 11400000, guid: ab628a8e3bb618741a1a81ce600245ee, type: 2}
-  IntervalBetweenSpawns: 1
+  IntervalBetweenSpawns: 2

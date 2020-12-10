@@ -89,7 +89,7 @@ public class Tower : MonoBehaviour
         blast.TowerData = data;
 
         var bullet = Instantiate(bulletPrefab, transform);
-        bullet.DOMove(targetPosition, 0.3f).OnComplete(() => Destroy(bullet.gameObject));
+        bullet.DOMove(targetPosition, 0.4f).OnComplete(() => Destroy(bullet.gameObject));
     }
 
     private void OnTriggerEnter(Collider collider)

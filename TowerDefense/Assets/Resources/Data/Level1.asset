@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 220da3d5c5f654745b552a8e9ead575d, type: 2}
   - {fileID: 11400000, guid: 94e9046f4583ad5459b6594492c1f1fd, type: 2}
   GoalHealth: 5
-  InitialInterval: 30
-  IntervalBetweenWaves: 10
+  InitialInterval: 90
+  IntervalBetweenWaves: 20
