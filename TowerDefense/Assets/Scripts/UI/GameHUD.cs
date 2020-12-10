@@ -19,7 +19,7 @@ public class GameHUD : MonoBehaviour
     {
         startNowButton.onClick.AddListener(waveStartedEvent.Trigger);
 
-        StartCoroutine(Timer(levelData.InitialInterval));
+        timerCoroutine = StartCoroutine(Timer(levelData.InitialInterval));
 
         waveStartedEvent.Listen(OnWaveStarted);
         waveEndedEvent.Listen(OnWaveEnded);
