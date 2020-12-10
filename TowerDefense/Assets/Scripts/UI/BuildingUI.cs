@@ -10,6 +10,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     [SerializeField] private Button rotateButton;
     [SerializeField] private Canvas canvas;
     [SerializeField] private new Camera camera;
+    [SerializeField] private GameEvent buildingPlacedEvent;
 
     private RectTransform rectTransform;
     private Vector2 uiOffset;
@@ -74,6 +75,7 @@ public class BuildingUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public void OnEndDrag(PointerEventData pointerEventData)
     {
         building.OnEndDrag();
+        buildingPlacedEvent.Trigger();
     }
 
     public void OnDrag(PointerEventData pointerEventData)

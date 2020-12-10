@@ -7,6 +7,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public static event Action<Vector2, Building> SelectedEvent;
 
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private RuntimeList buildingsList;
 
     [NonSerialized] public float YPosition;
 
@@ -14,8 +15,14 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
+        buildingsList.Items.Add(gameObject);
         material = meshRenderer.material;
         YPosition = transform.localPosition.y;
+    }
+
+    private void OnDestroy()
+    {
+        buildingsList.Items.Remove(gameObject);
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)

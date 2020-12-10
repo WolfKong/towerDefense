@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6367148920617579692}
+  buildingsList: {fileID: 11400000, guid: 4a9dc690aaf35da419f3dc03f16fe9c5, type: 2}
