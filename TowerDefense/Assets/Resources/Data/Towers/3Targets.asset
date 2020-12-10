@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3Targets
   m_EditorClassIdentifier: 
   Interval: 0.8
-  Damage: 10
+  Damage: 12
   SimultaneousTargets: 3
   DamageType: 0
   BlastPrefab: {fileID: 5230048863558142649, guid: 9702a89237b35a145ba2b652a02a5f2e,

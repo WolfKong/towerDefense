@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbda91f6f5d41b469e50c9b44e07f8a, type: 3}
   m_Name: AreaDamage
   m_EditorClassIdentifier: 
-  Interval: 1.5
+  Interval: 1.6
   Damage: 20
   SimultaneousTargets: 1
   DamageType: 0

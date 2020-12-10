@@ -27,6 +27,7 @@ public class PathChecker : MonoBehaviour
     private void OnDestroy()
     {
         noPathWarning.transform.DOKill();
+        buildingPlaced.Unlisten(OnBuildingPlaced);
     }
 
     private void OnBuildingPlaced()
