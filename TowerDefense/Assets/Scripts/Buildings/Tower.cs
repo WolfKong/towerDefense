@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] private Transform bulletPrefab;
+    [SerializeField] private ObjectPool bulletPool;
 
     protected List<GameObject> Targets = new List<GameObject>();
 
@@ -88,8 +88,9 @@ public class Tower : MonoBehaviour
         blast.transform.position = targetPosition;
         blast.TowerData = data;
 
-        var bullet = Instantiate(bulletPrefab, transform);
-        bullet.DOMove(targetPosition, 0.4f).OnComplete(() => Destroy(bullet.gameObject));
+        var bullet = bulletPool.GetObject();
+        bullet.transform.SetParent(transform, false);
+        bullet.transform.DOMove(targetPosition, 0.4f).OnComplete(() => bulletPool.ReturnObject(bullet));
     }
 
     private void OnTriggerEnter(Collider collider)
